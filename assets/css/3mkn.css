@@ -1,10 +1,12 @@
 .content-container {
     display: flex;
+    flex-wrap: wrap; /* Mengatur flex container untuk pindah ke baris berikutnya jika tidak cukup ruang */
     justify-content: space-between;
 }
 
 .content-box {
-    width: 30%;
+    flex: 1; /* Menggunakan flexbox agar .content-box mengisi sebagian besar lebar yang tersedia */
+    width: calc(33.33% - 20px); /* Menggunakan calc() untuk mengatur lebar dan memberikan margin kanan dan kiri */
     margin: 10px;
     padding: 10px;
     border: 1px solid #ddd;
@@ -13,4 +15,16 @@
 
 .image {
     margin-top: 10px;
+}
+
+/* Media Query untuk responsif pada perangkat berukuran lebih kecil */
+@media (max-width: 768px) {
+    .content-container {
+        flex-direction: column; /* Mengatur ulang flex container menjadi tumpukan vertikal pada perangkat kecil */
+    }
+
+    .content-box {
+        width: 100%; /* Mengisi lebar penuh pada perangkat kecil */
+        margin: 10px 0; /* Menghapus margin atas dan bawah */
+    }
 }
